@@ -1,0 +1,65 @@
+<MenuScreen>:
+    BoxLayout:
+        padding: 100
+        spacing: 50
+        orientation: 'vertical'
+
+        Button:
+            text: 'Новая игра'
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'game'
+        Button:
+            text: 'Загрузить игру'
+        Button:
+            text: 'Настройки'
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'settings'
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            size_hint: 0.4, 0.4
+            text: 'Back to menu'
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'menu'
+
+
+<GameScreen>
+    label_text: label
+    action_button1: action_button1
+    action_button2: action_button2
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 3
+        padding: 50
+        spacing: 50
+        Label:
+            id: label
+            text: 'Начало игры'
+            font_size: 40
+        BoxLayout:
+            spacing: 50
+            Button:
+                text: "Назад"
+                font_size: 20
+                size_hint: 0.5, 0.5
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'menu'
+            Button:
+                id: action_button1
+                text: ""
+                font_size: 20
+                size_hint: 0.5, 0.5
+
+            Button:
+                id: action_button2
+                text: "начать"
+                font_size: 20
+                size_hint: 0.5, 0.5
+                on_release:
+                    root.action_for_button1()
